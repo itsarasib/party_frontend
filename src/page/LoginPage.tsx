@@ -13,6 +13,12 @@ const LoginPage: React.FC = () => {
     setPassword(e.target.value);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   const handleLogin = async () => {
     try {
       const response = await fetch("http://localhost:8080/user/login", {
@@ -51,6 +57,7 @@ const LoginPage: React.FC = () => {
               width={"400px"}
               bg={"white"}
               type="email"
+              onKeyDown={handleKeyDown}
               onChange={emailHandler}
             />
           </Box>
@@ -62,6 +69,7 @@ const LoginPage: React.FC = () => {
               placeholder="password"
               width={"400px"}
               bg={"white"}
+              onKeyDown={handleKeyDown}
               onChange={passwordHandler}
             />
           </Box>
