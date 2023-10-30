@@ -1,11 +1,13 @@
 import { Box, Button, Center, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage: React.FC = () => {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const firstnameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstname(e.target.value);
@@ -21,6 +23,12 @@ const RegisterPage: React.FC = () => {
 
   const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleRegister();
+    }
   };
 
   const handleRegister = async () => {
@@ -40,6 +48,8 @@ const RegisterPage: React.FC = () => {
 
       localStorage.setItem("token", data.token);
       console.log(data.token);
+
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +73,7 @@ const RegisterPage: React.FC = () => {
               placeholder="firstname"
               width={"400px"}
               bg={"white"}
+              onKeyDown={handleKeyDown}
               onChange={firstnameHandler}
               value={firstname}
             />
@@ -75,6 +86,7 @@ const RegisterPage: React.FC = () => {
               placeholder="lastname"
               width={"400px"}
               bg={"white"}
+              onKeyDown={handleKeyDown}
               onChange={lastnameHandler}
               value={lastname}
             />
@@ -88,6 +100,7 @@ const RegisterPage: React.FC = () => {
               width={"400px"}
               bg={"white"}
               type="email"
+              onKeyDown={handleKeyDown}
               onChange={emailHandler}
               value={email}
             />
@@ -100,6 +113,7 @@ const RegisterPage: React.FC = () => {
               placeholder="password"
               width={"400px"}
               bg={"white"}
+              onKeyDown={handleKeyDown}
               onChange={passwordHandler}
               value={password}
             />

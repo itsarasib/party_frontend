@@ -15,8 +15,10 @@ const NavBar: React.FC = () => {
       fontSize="18px"
     >
       <Box display={"flex"}>
-        <Link paddingRight={"50px"}>Home</Link>
-        <Link>Profile</Link>
+        <Link paddingRight={"50px"} href="/home">
+          Home
+        </Link>
+        <Link href="/dashboard">Profile</Link>
       </Box>
       <Box>
         <Link

@@ -1,9 +1,11 @@
 import { Box, Button, Center, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -33,6 +35,8 @@ const LoginPage: React.FC = () => {
       console.log(data);
 
       localStorage.setItem("token", data.token);
+
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
@@ -79,6 +83,7 @@ const LoginPage: React.FC = () => {
               _hover={{ textDecoration: "underline" }}
               cursor={"pointer"}
               width={"30%"}
+              onClick={() => navigate("/register")}
             >
               Create account?
             </Text>
