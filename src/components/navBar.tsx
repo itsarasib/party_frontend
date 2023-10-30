@@ -18,7 +18,7 @@ const NavBar: React.FC = () => {
         <Link paddingRight={"50px"} href="/home">
           Home
         </Link>
-        <Link href="/dashboard">Profile</Link>
+        <Link href="/dashboard">Dashboard</Link>
       </Box>
       <Box>
         <Link

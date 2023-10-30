@@ -36,7 +36,7 @@ const LoginPage: React.FC = () => {
 
       localStorage.setItem("token", data.token);
 
-      navigate("/home");
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
