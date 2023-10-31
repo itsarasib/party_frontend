@@ -1,7 +1,17 @@
 import { Box, Link } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 const NavBar: React.FC = () => {
-  const hasToken = !!localStorage.getItem("token");
+  const [token, setToken] = useState<boolean>(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setToken(true);
+    } else {
+      setToken(false);
+    }
+  }, []);
 
   return (
     <Box
@@ -29,7 +39,7 @@ const NavBar: React.FC = () => {
           padding="10px 18px"
           href="/login"
         >
-          {hasToken ? "Sign Out" : "Log In"}
+          {token ? "Sign Out" : "Log In"}
         </Link>
       </Box>
     </Box>
