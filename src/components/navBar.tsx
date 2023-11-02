@@ -23,6 +23,8 @@ const NavBar: React.FC = () => {
       width="100%"
       fontWeight={600}
       fontSize="18px"
+      bg={"gray.400"}
+      mb={"20px"}
     >
       <Box display={"flex"}>
         <Link paddingRight={"50px"} href="/home">
